@@ -28,4 +28,24 @@
       }
     }
   }
+
+  @media (max-width: 1260px) {
+    margin-top: 30px;
+    ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 470px) {
+    overflow: auto;
+    width: 100%;
+    padding: 0 15px;
+    ul {
+      gap: 0px;
+      justify-content: start;
+      flex-wrap: nowrap;
+    }
+  }
 }

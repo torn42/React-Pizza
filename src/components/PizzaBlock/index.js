@@ -1,1 +1,2 @@
-export * from './PizzaBlock';
+export { PizzaBlock } from './PizzaBlock';
+export { Skeleton } from './Skeleton';
