@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './search.module.scss';
+import { SearchContext } from '../../App';
 
-export function Search({ searchValue, setSearchValue }) {
+export function Search() {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+
   return (
     <div className={styles.root}>
       <svg
@@ -46,7 +49,7 @@ export function Search({ searchValue, setSearchValue }) {
         <svg
           onClick={() => setSearchValue('')}
           className={styles.clearicon}
-          enable-background="new 0 0 48 48"
+          enableBackground="new 0 0 48 48"
           height="48px"
           id="Layer_1"
           version="1.1"
