@@ -1,0 +1,11 @@
+.root {
+  padding: 100px;
+  text-align: center;
+}
+.root span {
+  font-size: 65px;
+}
+.root p {
+  margin-top: 5px;
+  font-size: 22px;
+}
