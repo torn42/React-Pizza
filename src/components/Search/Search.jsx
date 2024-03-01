@@ -5,7 +5,7 @@ import { SearchContext } from '../../App';
 
 export function Search() {
   const [value, setValue] = React.useState('');
-  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const { _, setSearchValue } = React.useContext(SearchContext);
   const inputRef = React.useRef();
 
   const onClear = () => {
