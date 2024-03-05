@@ -7,7 +7,7 @@ import {
   setCategoryId,
   setCurrentPage,
   setFilters,
-} from '../redux/slices/filter/filterSlice';
+} from '../redux/slices/filterSlice';
 
 import { Pagination } from '../components/Pagination';
 import { Categories } from '../components/Categories';
