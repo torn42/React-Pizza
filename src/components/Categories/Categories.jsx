@@ -1,14 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export function Categories({ value, onChangeCategory }) {
-  const categories = [
-    'Все',
-    'Мясные',
-    'Вегетарианская',
-    'Гриль',
-    'Острые',
-    'Закрытые',
-  ];
+  const categories = useSelector((state) => state.filter.categories);
   return (
     <div className="categories">
       <ul>
