@@ -6,7 +6,7 @@ export const fetchPizzas = createAsyncThunk(
   async (params) => {
     const { currentPage, sortBy, order, category, search } = params;
     const { data } = await axios.get(
-      `http1s://65c5bde8e5b94dfca2e039c5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+      `https://65c5bde8e5b94dfca2e039c5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
     );
     return data;
   }
