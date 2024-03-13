@@ -5,7 +5,11 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function FullPizza() {
-  const [pizza, setPizza] = React.useState();
+  const [pizza, setPizza] = React.useState<{
+    imageUrl: string;
+    title: string;
+    price: number;
+  }>();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -22,10 +26,10 @@ export default function FullPizza() {
       }
     }
     fetchPizza();
-  }, []);
+  }, [id, navigate]);
 
   if (!pizza) {
-    return 'Загрузка';
+    return <>Загрузка...</>;
   }
 
   return (

@@ -66,7 +66,7 @@ function Home() {
       dispatch(setFilters({ ...params, sort }));
       isSearch.current = true;
     }
-  }, []);
+  }, [dispatch]);
 
   React.useEffect(() => {
     getPizzas();
