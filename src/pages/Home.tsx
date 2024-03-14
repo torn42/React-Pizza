@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   filterSelector,
-  setCategoryId,
   setCurrentPage,
   setFilters,
 } from '../redux/slices/filterSlice';
@@ -27,14 +26,6 @@ function Home() {
   const { categoryId, categories, sort, currentPage, searchValue } =
     useSelector(filterSelector);
   const { items, status } = useSelector(pizzaDataSelector);
-
-  const onChangeCategory = (id: number) => {
-    dispatch(setCategoryId(id));
-  };
-
-  const onChangePage = (number: number) => {
-    dispatch(setCurrentPage(number));
-  };
 
   const getPizzas = () => {
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
@@ -99,7 +90,7 @@ function Home() {
     <>
       <div className="container">
         <div className="content__top">
-          <Categories value={categoryId} onChangeCategory={onChangeCategory} />
+          <Categories />
           <Sort />
         </div>
         <h2 className="content__title"> {categories[categoryId]} пиццы</h2>
@@ -125,7 +116,7 @@ function Home() {
             )}
           </>
         )}
-        <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+        <Pagination />
       </div>
     </>
   );
