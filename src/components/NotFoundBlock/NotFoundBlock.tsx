@@ -1,6 +1,8 @@
 import React from 'react';
+
 import styles from './notfoundblock.module.scss';
-export function NotFoundBlock() {
+
+export const NotFoundBlock: React.FC = () => {
   return (
     <div className={styles.root}>
       <h1>
@@ -10,4 +12,4 @@ export function NotFoundBlock() {
       <p>К сожалению, данная страница отсутствует в нашем интернет-магазине</p>
     </div>
   );
-}
+};

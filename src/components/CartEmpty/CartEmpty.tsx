@@ -9,7 +9,9 @@ export function CartEmpty() {
     <div className="wrapper">
       <div className="container container--cart">
         <div className="cart cart--empty">
-          <h2>Корзина пустая 😕</h2>
+          <h2>
+            Корзина пустая <span>😕</span>
+          </h2>
           <p>
             Вы не добавили в корзину ни одной пиццы.
             <br />
