@@ -1,28 +1,42 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setSort, sortSelector } from '../../redux/slices/filterSlice';
+import {
+  Sort,
+  SortPropertyEnum,
+  setSort,
+  sortSelector,
+} from '../../redux/slices/filterSlice';
 
-type SortItem = {
+export type SortItem = {
   name: string;
-  sortProperty: string;
+  sortProperty: SortPropertyEnum;
 };
 
 export const sortList: SortItem[] = [
-  { name: 'популярности (по убыванию)', sortProperty: 'rating' },
-  { name: 'популярности (по возрастанию)', sortProperty: '-rating' },
-  { name: 'цене (по убыванию)', sortProperty: 'price' },
-  { name: 'цене (по возрастанию)', sortProperty: '-price' },
-  { name: 'названию (по убыванию)', sortProperty: 'title' },
-  { name: 'названию (по возрастанию', sortProperty: '-title' },
+  {
+    name: 'популярности (по убыванию)',
+    sortProperty: SortPropertyEnum.RATING_DESC,
+  },
+  {
+    name: 'популярности (по возрастанию)',
+    sortProperty: SortPropertyEnum.RATING_ASC,
+  },
+  { name: 'цене (по убыванию)', sortProperty: SortPropertyEnum.PRICE_DESC },
+  { name: 'цене (по возрастанию)', sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: 'названию (по убыванию)', sortProperty: SortPropertyEnum.TITLE_DESC },
+  {
+    name: 'названию (по возрастанию',
+    sortProperty: SortPropertyEnum.TITLE_ASC,
+  },
 ];
 
-export const Sort: React.FC = () => {
+export const SortPopup: React.FC = () => {
   const dispatch = useDispatch();
   const sort = useSelector(sortSelector);
   const sortRef = useRef<HTMLDivElement>(null);
 
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const chooseActive = (obj: SortItem) => {
     dispatch(setSort(obj));
@@ -31,8 +45,7 @@ export const Sort: React.FC = () => {
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const _event = event as MouseEvent & { path: Node[] };
-      if (sortRef.current && !_event.composedPath().includes(sortRef.current)) {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setIsVisible(false);
       }
     };
