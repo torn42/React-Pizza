@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { filterSelector, setCategoryId } from '../../redux/slices/filterSlice';
 
-export const Categories: React.FC = () => {
+export const Categories: React.FC = memo(() => {
   const dispatch = useDispatch();
   const { categoryId } = useSelector(filterSelector);
   const categories = useSelector((state: any) => state.filter.categories);
 
-  const onChangeCategory = (value: number) => {
+  const onChangeCategory = useCallback((value: number) => {
     dispatch(setCategoryId(value));
-  };
+  }, [dispatch]);
   return (
     <div className="categories">
       <ul>
@@ -27,4 +28,4 @@ export const Categories: React.FC = () => {
       </ul>
     </div>
   );
-};
+});

@@ -12,11 +12,11 @@ export function Skeleton() {
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
     >
-      <circle cx="130" cy="130" r="120" />
-      <rect x="0" y="270" rx="5" ry="5" width="280" height="24" />
-      <rect x="0" y="305" rx="5" ry="5" width="280" height="85" />
-      <rect x="0" y="415" rx="5" ry="5" width="90" height="27" />
-      <rect x="125" y="407" rx="21" ry="21" width="155" height="40" />
+      <circle cx="130" cy="130" r="120"/>
+      <rect x="0" y="270" rx="5" ry="5" width="280" height="24"/>
+      <rect x="0" y="305" rx="5" ry="5" width="280" height="85"/>
+      <rect x="0" y="415" rx="5" ry="5" width="90" height="27"/>
+      <rect x="125" y="407" rx="21" ry="21" width="155" height="40"/>
     </ContentLoader>
   );
 }

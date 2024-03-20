@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { Sort } from './filterSlice';
 
 type Pizza = {
   id: string;
@@ -54,11 +53,7 @@ export const fetchPizzas = createAsyncThunk(
 const pizzaSlice = createSlice({
   name: 'pizza',
   initialState,
-  reducers: {
-    setItems(state, action: PayloadAction<Pizza[]>) {
-      state.items = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPizzas.pending, (state) => {
@@ -80,7 +75,5 @@ const pizzaSlice = createSlice({
 });
 
 export const pizzaDataSelector = (state: RootState) => state.pizza;
-
-export const { setItems } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

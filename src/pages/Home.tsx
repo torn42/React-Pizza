@@ -1,26 +1,15 @@
-import React from 'react';
-
-import qs from 'qs';
+import React, { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import {
-  filterSelector,
-  setFilters,
-  FilterSliceState,
-} from '../redux/slices/filterSlice';
-import {
-  SearchPizzaParams,
-  Status,
-  fetchPizzas,
-  pizzaDataSelector,
-} from '../redux/slices/PizzaSlice';
+import { filterSelector } from '../redux/slices/filterSlice';
+import { fetchPizzas, pizzaDataSelector, Status } from '../redux/slices/PizzaSlice';
 import { useAppDispatch } from '../redux/store';
 
 import { Pagination } from '../components/Pagination';
 import { Categories } from '../components/Categories';
-import { SortPopup, sortList } from '../components/SortPopup';
+import { SortPopup } from '../components/SortPopup';
 import { PizzaBlock, Skeleton } from '../components/PizzaBlock';
 
 function Home() {
@@ -46,13 +35,13 @@ function Home() {
         category,
         search,
         currentPage: String(currentPage),
-      })
+      }),
     );
 
     window.scrollTo(0, 0);
   };
 
-  // React.useEffect(() => {
+  // useEffect(() => {
   //   if (window.location.search) {
   //     const params = qs.parse(
   //       window.location.search.substring(1)
@@ -76,11 +65,11 @@ function Home() {
   //   }
   // }, [dispatch]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  // React.useEffect(() => {
+  // useEffect(() => {
   //   if (isMounted.current) {
   //     const queryString = qs.stringify({
   //       sortProperty: sort.sortProperty,
@@ -93,17 +82,17 @@ function Home() {
   //   isMounted.current = true;
   // }, [categoryId, sort.sortProperty, currentPage]);
 
-  const pizzas = items.map((obj: any) => <PizzaBlock {...obj} />);
+  const pizzas = items.map((obj: any) => <PizzaBlock {...obj} key={obj.id}/>);
   const skeletons = [...new Array(4)].map((_, index) => (
-    <Skeleton key={index} />
+    <Skeleton key={index}/>
   ));
 
   return (
     <>
       <div className="container">
         <div className="content__top">
-          <Categories />
-          <SortPopup />
+          <Categories/>
+          <SortPopup/>
         </div>
         <h2 className="content__title"> {categories[categoryId]} пиццы</h2>
         {status === Status.ERROR && searchValue === '' ? (
@@ -128,7 +117,7 @@ function Home() {
             )}
           </>
         )}
-        <Pagination />
+        <Pagination/>
       </div>
     </>
   );

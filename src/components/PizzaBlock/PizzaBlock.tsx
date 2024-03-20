@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  ICartItem,
-  addItem,
-  cartItemSelector,
-} from '../../redux/slices/cartSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {addItem, cartItemSelector, ICartItem,} from '../../redux/slices/cartSlice';
 
 const typeNames = ['Тонкое', 'Традиционное'];
 
@@ -27,7 +23,6 @@ export const PizzaBlock: React.FC<PizzaProps> = ({
   imageUrl,
   sizes,
   types,
-  rating,
 }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector(cartItemSelector(id));
@@ -53,7 +48,7 @@ export const PizzaBlock: React.FC<PizzaProps> = ({
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
         <Link key={id} to={`/pizza/${id}`}>
-          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+          <img className="pizza-block__image" src={imageUrl} alt="Pizza"/>
           <h4 className="pizza-block__title">{title}</h4>
         </Link>
         <div className="pizza-block__selector">

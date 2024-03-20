@@ -1,12 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  Sort,
-  SortPropertyEnum,
-  setSort,
-  sortSelector,
-} from '../../redux/slices/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSort, SortPropertyEnum, sortSelector } from '../../redux/slices/filterSlice';
 
 export type SortItem = {
   name: string;
@@ -31,7 +26,7 @@ export const sortList: SortItem[] = [
   },
 ];
 
-export const SortPopup: React.FC = () => {
+export const SortPopup: React.FC = memo(() => {
   const dispatch = useDispatch();
   const sort = useSelector(sortSelector);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -43,7 +38,7 @@ export const SortPopup: React.FC = () => {
     setIsVisible(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setIsVisible(false);
@@ -94,4 +89,4 @@ export const SortPopup: React.FC = () => {
       )}
     </div>
   );
-};
+});

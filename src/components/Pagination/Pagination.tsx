@@ -12,6 +12,7 @@ export const Pagination: React.FC = () => {
   const onChangePage = (number: number) => {
     dispatch(setCurrentPage(number));
   };
+
   return (
     <div>
       <ReactPaginate
