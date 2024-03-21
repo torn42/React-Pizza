@@ -4,6 +4,10 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
+  @media(max-width: 1060px) {
+    padding: 30px 0px 20px 0px;
+  }
+
   @media (max-width: 645px) {
     padding: 30px 0;
   }
@@ -39,6 +43,12 @@
 
     p {
       color: #7b7b7b;
+    }
+
+    @media(max-width: 1059px) {
+      p {
+        max-width: 100px;
+      }
     }
   }
 }

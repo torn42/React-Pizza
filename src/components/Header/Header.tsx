@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
   return (
     <div>
       <div className="header">
-        <div className="container">
+        <div className="container header-container">
           <Link to="/">
             <div className="header__logo">
               <img width="38" src={logoSvg} alt="Pizza logo"/>
@@ -42,7 +42,8 @@ export const Header: React.FC = () => {
               </div>
             </div>
           </Link>
-          <Search/>
+
+          {location.pathname !== '/cart' && (<Search/>)}
 
           <div className="header__cart">
             {location.pathname !== '/cart' && (

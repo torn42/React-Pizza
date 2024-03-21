@@ -1,4 +1,5 @@
 .root {
+
   li {
     display: inline-block;
   }
@@ -30,6 +31,18 @@
         background-color: #fe5f1e;
         color: white;
       }
+    }
+  }
+
+  @media (max-width: 645px) {
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 405px) {
+    padding-bottom: 20px;
+    a {
+      width: 35px;
+      height: 35px;
     }
   }
 }
