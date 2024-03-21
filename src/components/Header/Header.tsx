@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import logoSvg from '../../assets/img/pizza-logo.svg';
 
@@ -6,17 +6,28 @@ import { Link, useLocation } from 'react-router-dom';
 import { Search } from '../Search';
 
 import { useSelector } from 'react-redux';
-import { cartSelector } from '../../redux/slices/cartSlice';
+import { cartSelector } from '../../redux/cart/selectors';
 
 export const Header: React.FC = () => {
+  const isMounted = useRef(false);
+
   const { items, totalPrice } = useSelector(cartSelector);
 
   const location = useLocation();
 
   const totalCount = items.reduce(
     (sum: number, item: any) => sum + item.count,
-    0
+    0,
   );
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+      localStorage.getItem('cart');
+    }
+    isMounted.current = true;
+  }, [items]);
 
   return (
     <div>
@@ -24,14 +35,14 @@ export const Header: React.FC = () => {
         <div className="container">
           <Link to="/">
             <div className="header__logo">
-              <img width="38" src={logoSvg} alt="Pizza logo" />
+              <img width="38" src={logoSvg} alt="Pizza logo"/>
               <div>
                 <h1>React Pizza</h1>
                 <p>самая вкусная пицца во вселенной</p>
               </div>
             </div>
           </Link>
-          <Search />
+          <Search/>
 
           <div className="header__cart">
             {location.pathname !== '/cart' && (

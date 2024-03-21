@@ -1,12 +1,20 @@
 import React, { memo, useCallback } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { filterSelector, setCategoryId } from '../../redux/slices/filterSlice';
+import { setCategoryId } from '../../redux/filter/slice';
+import { filterSelector } from '../../redux/filter/selectors';
 
+export const categories = [
+  'Все',
+  'Мясные',
+  'Вегетарианские',
+  'Гриль',
+  'Острые',
+  'Закрытые',
+];
 export const Categories: React.FC = memo(() => {
   const dispatch = useDispatch();
   const { categoryId } = useSelector(filterSelector);
-  const categories = useSelector((state: any) => state.filter.categories);
 
   const onChangeCategory = useCallback((value: number) => {
     dispatch(setCategoryId(value));

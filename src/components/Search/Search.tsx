@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import debounce from 'lodash.debounce';
 
 import styles from './search.module.scss';
 
-import { setSearchValue } from '../../redux/slices/filterSlice';
+import { setSearchValue } from '../../redux/filter/slice';
 import { useDispatch } from 'react-redux';
 
 export const Search: React.FC = () => {
@@ -23,7 +23,7 @@ export const Search: React.FC = () => {
     debounce((str: string) => {
       dispatch(setSearchValue(str));
     }, 300),
-    []
+    [],
   );
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +40,7 @@ export const Search: React.FC = () => {
         width="18"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title />
+        <title/>
         <path
           d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
           style={{
