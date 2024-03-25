@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const FullPizza: React.FC = () => {
   const [pizza, setPizza] = useState<{
@@ -17,7 +17,7 @@ const FullPizza: React.FC = () => {
     async function fetchPizza() {
       try {
         const { data } = await axios.get(
-          'https://65c5bde8e5b94dfca2e039c5.mockapi.io/items/' + id
+          'https://65c5bde8e5b94dfca2e039c5.mockapi.io/items/' + id,
         );
         setPizza(data);
       } catch (error) {
@@ -35,15 +35,14 @@ const FullPizza: React.FC = () => {
 
   return (
     <div className="container">
-      <img className='fullPizza-img' src={pizza.imageUrl} alt=""/>
+      <img className="fullPizza-img" src={pizza.imageUrl} alt=""/>
       <h2>{pizza.title}</h2>
       <h4>{pizza.price}</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum suscipit,
-        sed, ducimus obcaecati, reprehenderit neque ipsa quod at numquam
-        pariatur minima quis soluta culpa eaque perspiciatis distinctio vero.
-        Reprehenderit, perspiciatis!
-      </p>
+      <Link to="/">
+        <button className="button button--outline button--add">
+          <span>Назад</span>
+        </button>
+      </Link>
     </div>
   );
 };
