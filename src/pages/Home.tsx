@@ -43,9 +43,13 @@ function Home() {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue, currentPage, getPizzas]);
 
-  const pizzas = items.map((obj: any) => <PizzaBlock {...obj} key={obj.id}/>);
-  const skeletons = [...new Array(4)].map((_, index) => (
-    <Skeleton key={index}/>
+  const pizzas: ReactElement[] = useMemo(
+    () => items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />),
+    [items]);
+
+  const skeleton: ReactElement[] = useMemo(
+    () => [...new Array(6)].map((_, index) => <Skeleton key={index} />), []);
+
   ));
 
   return (
@@ -73,7 +77,7 @@ function Home() {
               </div>
             ) : (
               <div className="content__items">
-                {status === Status.LOADING ? skeletons : pizzas}
+                {status === Status.LOADING ? skeleton : pizzas}
               </div>
             )}
           </>
