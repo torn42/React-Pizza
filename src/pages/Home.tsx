@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 import { filterSelector } from '../redux/filter/selectors';
@@ -43,11 +43,11 @@ function Home() {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue, currentPage, getPizzas]);
 
-  const pizzas = useMemo(
+  const pizzas: ReactElement[] = useMemo(
     () => items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />),
     [items]);
 
-  const skeleton = useMemo(
+  const skeleton: ReactElement[] = useMemo(
     () => [...new Array(6)].map((_, index) => <Skeleton key={index} />), []);
 
   return (
