@@ -43,14 +43,12 @@ function Home() {
     getPizzas();
   }, [categoryId, sort.sortProperty, searchValue, currentPage, getPizzas]);
 
-  const pizzas: ReactElement[] = useMemo(
+  const pizzas = useMemo(
     () => items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />),
     [items]);
 
-  const skeleton: ReactElement[] = useMemo(
+  const skeleton = useMemo(
     () => [...new Array(6)].map((_, index) => <Skeleton key={index} />), []);
-
-  ));
 
   return (
     <>
