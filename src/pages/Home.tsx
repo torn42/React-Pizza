@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 import { filterSelector } from '../redux/filter/selectors';
